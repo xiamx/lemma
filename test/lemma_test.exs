@@ -9,7 +9,8 @@ defmodule LemmaTest do
 
   test "simple scenario" do
     {:ok, pid} = Lemma.start_link
-    Lemma.read(pid, "plays")
-    Lemma.get_output(pid) |> IO.inspect
+    assert "play^s" == Lemma.read(pid, "plays")
+    {:ok, pid} = Lemma.start_link
+    assert "act" == Lemma.read(pid, "act")
   end
 end

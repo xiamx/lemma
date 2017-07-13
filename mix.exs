@@ -28,6 +28,10 @@ defmodule Lemma.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:gen_state_machine, "~> 2.0"}]
+    [
+      {:gen_state_machine, "~> 2.0"},
+      {:libgraph, "~> 0.9"},
+      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false}
+    ]
   end
 end
