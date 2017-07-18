@@ -8,9 +8,7 @@ defmodule LemmaTest do
   end
 
   test "simple scenario" do
-    {:ok, pid} = Lemma.start_link
-    assert "play^s" == Lemma.read(pid, "plays")
-    {:ok, pid} = Lemma.start_link
-    assert "act" == Lemma.read(pid, "act")
+    assert "play" == Lemma.Parser.parse("plays")
+    assert "act" == Lemma.Parser.parse("acted")
   end
 end

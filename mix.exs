@@ -30,8 +30,8 @@ defmodule Lemma.Mixfile do
   defp deps do
     [
       {:gen_state_machine, "~> 2.0"},
-      {:libgraph, "~> 0.9"},
-      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false}
+      {:gen_fst, "~> 0.2"},
+      {:libgraph, "~> 0.9"}
     ]
   end
 end
