@@ -31,7 +31,8 @@ defmodule Lemma.Mixfile do
     [
       {:gen_state_machine, "~> 2.0"},
       {:gen_fst, "~> 0.2"},
-      {:libgraph, "~> 0.9"}
+      {:libgraph, "~> 0.9"},
+      {:benchee, "~> 0.9", only: :dev}
     ]
   end
 end
