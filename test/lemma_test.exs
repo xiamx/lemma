@@ -9,6 +9,6 @@ defmodule LemmaTest do
 
   test "simple scenario" do
     assert "play" == Lemma.Parser.parse("plays")
-    assert "act" == Lemma.Parser.parse("acted")
+    assert "visit" == Lemma.Parser.parse("visited")
   end
 end
