@@ -1,3 +1,5 @@
-%{"gen_fst": {:git, "https://github.com/xiamx/gen_fst.git", "24df4531de7870b65e43af8530b29aba4ade3b0c", [branch: "nomacro"]},
-  "gen_state_machine": {:hex, :gen_state_machine, "2.0.0", "f3bc7d961e4cd9f37944b379137e25fd063feffc42800bed69197fd1b78b3151", [:mix], []},
-  "libgraph": {:hex, :libgraph, "0.10.2", "7768a42bcae29e22b909823219ef222112f9126f8a28d89f01ec8b93509c4a66", [:mix], []}}
+%{"benchee": {:hex, :benchee, "0.9.0", "433d946b0e4755e186fe564568ead4f593b0d15337fcffa95ed7d5b8a6612670", [:mix], [{:deep_merge, "~> 0.1", [hex: :deep_merge, repo: "hexpm", optional: false]}], "hexpm"},
+  "deep_merge": {:hex, :deep_merge, "0.1.1", "c27866a7524a337b6a039eeb8dd4f17d458fd40fbbcb8c54661b71a22fffe846", [:mix], [], "hexpm"},
+  "gen_fst": {:git, "https://github.com/xiamx/gen_fst.git", "b69bb51a53c8ce04d1fa4a3c741e56db144d1a32", [branch: "nomacro"]},
+  "gen_state_machine": {:hex, :gen_state_machine, "2.0.0", "f3bc7d961e4cd9f37944b379137e25fd063feffc42800bed69197fd1b78b3151", [:mix], [], "hexpm"},
+  "libgraph": {:hex, :libgraph, "0.10.2", "7768a42bcae29e22b909823219ef222112f9126f8a28d89f01ec8b93509c4a66", [:mix], [], "hexpm"}}

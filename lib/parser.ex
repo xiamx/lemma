@@ -4,9 +4,12 @@ defmodule Lemma.Parser do
 
   @fst GenFST.new
   @fst generate_rules(@fst, Lemma.En.Verbs.all, Lemma.En.Rules.verbs)
-  @fst generate_rules(@fst, Lemma.En.Nouns.all, Lemma.En.Rules.nouns)
-  @fst generate_rules(@fst, Lemma.En.Adjectives.all, Lemma.En.Rules.adjs)
+  # @fst generate_rules(@fst, Lemma.En.Nouns.all, Lemma.En.Rules.nouns)
+  # @fst generate_rules(@fst, Lemma.En.Adjectives.all, Lemma.En.Rules.adjs)
   IO.puts("Rules generated")
+
+  def load do
+  end
 
   def parse(word) do
     GenFST.parse(@fst, word)

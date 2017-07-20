@@ -8,7 +8,6 @@ defmodule LemmaTest do
   end
 
   test "simple scenario" do
-    assert "play" == Lemma.Parser.parse("plays")
-    assert "visit" == Lemma.Parser.parse("visited")
+    assert {:ok, "play"} == Lemma.Parser.parse("plays")
   end
 end
