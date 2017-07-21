@@ -30,7 +30,7 @@ defmodule Lemma.Mixfile do
   defp deps do
     [
       {:gen_state_machine, "~> 2.0"},
-      {:gen_fst, github: "xiamx/gen_fst", branch: "nomacro"},
+      {:gen_fst, github: "xiamx/gen_fst"},
       {:libgraph, "~> 0.9"},
       {:benchee, "~> 0.9", only: :dev}
     ]
