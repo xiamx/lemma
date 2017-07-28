@@ -17,7 +17,7 @@ IO.puts "Benchmark using #{Enum.count words} fixture words"
 Benchee.run(%{
   "Lemmatize input" => fn () ->
     for word <- words do
-      fst |> Lemma.Parser.parse("word")
+      fst |> Lemma.Parser.parse(word)
     end
   end,
 })
