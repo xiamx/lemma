@@ -3,11 +3,11 @@ defmodule LemmaTest do
   use GenStateMachine
   doctest Lemma
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  setup_all context do
+    [fst: Lemma.Parser.new]
   end
 
-  test "simple scenario" do
-    assert {:ok, "play"} == Lemma.Parser.parse("plays")
+  test "simple scenario", context do
+    assert {:ok, "play"} == context[:fst] |> Lemma.Parser.parse("plays")
   end
 end
