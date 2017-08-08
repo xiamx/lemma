@@ -1,4 +1,3 @@
-fst = Lemma.Parser.new
 
 words = [
   "The", "history", "of", "NLP", "generally",
@@ -12,12 +11,15 @@ words = [
   "intelligence"
 ]
 
-words = words |> List.duplicate(10) |> List.flatten
-
 IO.puts "Benchmark using #{Enum.count words} fixture words"
+defmodule Profiling.Lemmatizing do
+  import ExProf.Macro
 
-Benchee.run(%{
-  "Lemmatize input" => fn () ->
-    Enum.map(words, &(Lemma.Parser.parse(fst, &1)))
-  end,
-})
+  def run do
+    profile do
+      fst = Lemma.Parser.new
+    end
+  end
+end
+
+Profiling.Lemmatizing.run
