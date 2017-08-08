@@ -4,10 +4,13 @@ defmodule Lemma.Parser do
 
   def new do
     fst = GenFST.new
+    |> generate_rules(Lemma.En.IrregularAdjectives.rules)
+    |> generate_rules(Lemma.En.IrregularAdverbs.rules)
+    |> generate_rules(Lemma.En.IrregularNouns.rules)
+    |> generate_rules(Lemma.En.IrregularVerbs.rules)
     |> generate_rules(Lemma.En.Verbs.all, Lemma.En.Rules.verbs)
     |> generate_rules(Lemma.En.Nouns.all, Lemma.En.Rules.nouns)
     |> generate_rules(Lemma.En.Adjectives.all, Lemma.En.Rules.adjs)
-    |> generate_rules(Lemma.En.IrregularAdjectives.rules)
     {:ok, pid} = GenServer.start_link(__MODULE__, fst)
     pid
   end 

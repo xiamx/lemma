@@ -30,7 +30,7 @@ defmodule Lemma.MorphParserGenerator do
     words_count = Enum.count(words)
     IO.puts "Generating rules for #{words_count} words"
     fst = Enum.reduce(Enum.with_index(words), fst, fn({word, i}, fst) -> 
-      IO.write "\rProgress: #{i}/#{words_count} .. #{round(100*i/words_count)}%"
+      IO.write "\rProgress: #{i + 1}/#{words_count} .. #{round(100*i/words_count)}%"
       Enum.reduce(suffix_rules, fst, fn(suffix_rule, fst) -> 
         process_one_rule(fst, word, suffix_rule)
       end)
