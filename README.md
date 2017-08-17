@@ -1,6 +1,6 @@
-# Lemma
+# <img src="http://cs.mcgill.ca/~mxia3/images/lemma.png" alt="Lemma">
 
-**TODO: Add description**
+A Morphological Parser (Analyser) writen in Elixir.
 
 ## Installation
 

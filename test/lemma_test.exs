@@ -4,7 +4,7 @@ defmodule LemmaTest do
   doctest Lemma
 
   setup_all context do
-    [fst: Lemma.Parser.new]
+    [fst: Lemma.Parser.new :en]
   end
 
   test "simple scenario", context do
