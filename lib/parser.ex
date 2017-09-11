@@ -1,6 +1,5 @@
 defmodule Lemma.Parser do
   import Lemma.MorphParserGenerator
-  use GenServer
 
   def new(:en) do
     parser = GenFST.new
