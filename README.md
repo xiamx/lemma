@@ -1,6 +1,8 @@
 # <img src="http://cs.mcgill.ca/~mxia3/images/lemma.png" alt="Lemma">
 
-A Morphological Parser (Analyser) / Lemmatizer writen in Elixir.
+A Morphological Parser (Analyser) / Lemmatizer writen in Elixir. It is implemented using a textbook classic method relying in an abstraction called [Finite State Transducer](https://github.com/xiamx/gen_fst). 
+
+**What are morphological parsing and lemmatization?**
 
 > For grammatical reasons, documents are going to use different forms of a word, such as organize, organizes, and organizing. Additionally, there are families of derivationally related words with similar meanings, such as democracy, democratic, and democratization. In many situations, it seems as if it would be useful for a search for one of these words to return documents that contain another word in the set.
 > <br/> The goal of both stemming and lemmatization is to reduce inflectional forms and sometimes derivationally related forms of a word to a common base form. For instance:
