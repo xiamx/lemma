@@ -1,4 +1,4 @@
-parser = Lemma.Parser.new :en
+parser = Lemma.new :en
 
 words = [
   "The", "history", "of", "NLP", "generally",
@@ -18,7 +18,7 @@ IO.puts "Benchmark using #{Enum.count words} fixture words"
 
 Benchee.run(%{
   "Lemmatize input sequential" => fn () ->
-    Enum.map(words, &(Lemma.Parser.parse(parser, &1)))
+    Enum.map(words, &(Lemma.parse(parser, &1)))
   end,
   # "Lemmatize input parallel" => fn () ->
   #   Lemma.Parser.parse(parser, words)

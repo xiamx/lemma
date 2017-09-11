@@ -1,5 +1,5 @@
 defmodule Lemma.En.Verbs do
-
+  @moduledoc false
   @verbs_set """
   aah abacinate abandon abase abash abate abbreviate abdicate abduce abduct
   aberrate abet abhor abide abjure ablactate ablate abnegate abolish abominate

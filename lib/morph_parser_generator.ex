@@ -1,4 +1,8 @@
 defmodule Lemma.MorphParserGenerator do
+  @moduledoc """
+  Functions for generating finite state transducer from a massive sets of rules.
+  """
+
   defp filter_valid_words(words) do
     words = words
     |> Enum.map(&String.trim/1)
@@ -14,6 +18,10 @@ defmodule Lemma.MorphParserGenerator do
     end
   end
 
+  @doc """
+  Given a finite state transducer fst a list of rules, produce a new
+  fst that incorporate these rules
+  """
   def generate_rules(fst, rules_) do
     words_count = Enum.count(rules_)
     IO.puts "Generating rules for #{words_count} words"
@@ -25,6 +33,11 @@ defmodule Lemma.MorphParserGenerator do
     fst
   end
 
+  @doc """
+  Given a finite state transducer fst, a list of words and a list
+  of suffix rules; produce a new fst that incorporate these suffix rules
+  for each of the word.
+  """
   def generate_rules(fst, words, suffix_rules) do
     words = filter_valid_words(words)
     words_count = Enum.count(words)

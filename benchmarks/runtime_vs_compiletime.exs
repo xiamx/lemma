@@ -1,4 +1,7 @@
 defmodule Lemma.Benchmark.ParserDynamic do
+  @moduledoc """
+  Parser is generated at runtime with `new/0`.
+  """
   import Lemma.MorphParserGenerator
   def new do
     fst = GenFST.new
@@ -12,6 +15,9 @@ defmodule Lemma.Benchmark.ParserDynamic do
 end
 
 defmodule Lemma.Benchmark.Parser do
+  @moduledoc """
+  Parser is generated at compile time as a module attribute
+  """
   import Lemma.MorphParserGenerator
   @fst GenFST.new
   @fst generate_rules(@fst, Lemma.En.Verbs.all, Lemma.En.Rules.verbs)

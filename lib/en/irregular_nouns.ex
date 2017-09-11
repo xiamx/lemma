@@ -1,4 +1,5 @@
 defmodule Lemma.En.IrregularNouns do
+  @moduledoc false
   @rules [
     [{"best", "well"}],
     [{"aardwolves", "aardwolf"}],

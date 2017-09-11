@@ -1,5 +1,5 @@
 defmodule Lemma.En.Rules do
-
+  @moduledoc false
   @verb_rules [
     {"", "s"},
     {"y", "ies"},

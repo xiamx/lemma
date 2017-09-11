@@ -1,4 +1,5 @@
 defmodule Lemma.En.IrregularAdjectives do
+  @moduledoc false
   @rules [
     [{"acer", "acer"}],
     [{"after", "after"}],

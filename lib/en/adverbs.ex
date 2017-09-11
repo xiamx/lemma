@@ -1,5 +1,5 @@
 defmodule Lemma.En.Adverbs do
-
+  @moduledoc false
   @adverbs_set """
   'tween a.d. a.k.a. a.m. aback abaft abaxially abeam abed abjectly ably
   abnormally aboard abominably aborad abortively about above aboveboard abreast

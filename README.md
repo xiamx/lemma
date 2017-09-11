@@ -19,8 +19,8 @@ A Morphological Parser (Analyser) / Lemmatizer writen in Elixir. It is implement
 
 ```elixir
 # Initialize a new morphological parser for English
-parser = Lemma.Parser.new :en
-assert {:ok, "play"} == parser |> Lemma.Parser.parse("plays")
+parser = Lemma.new :en
+assert {:ok, "play"} == parser |> Lemma.parse("plays")
 ```
 
 Documentation can be found at [https://hexdocs.pm/lemma](https://hexdocs.pm/lemma).
@@ -72,7 +72,7 @@ The script can be invoked with `mix run benchmarks/runtime_vs_compiletime.exs`
 
 #### Sample output
 
-````
+```
 Operating System: Windows
 CPU Information: Intel(R) Core(TM) i5-5300U CPU @ 2.30GHz
 Number of Available Cores: 4

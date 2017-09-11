@@ -1,4 +1,5 @@
 defmodule Lemma.En.IrregularAdverbs do
+  @moduledoc false
   @rules [
     [{"best", "well"}],
     [{"better", "well"}],

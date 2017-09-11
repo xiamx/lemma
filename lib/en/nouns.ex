@@ -1,5 +1,5 @@
 defmodule Lemma.En.Nouns do
-
+  @moduledoc false
   @nouns_set """
   'hood .22 0 1 1-dodecanol 1-hitter 10 100 1000 10000 100000 1000000 1000000000
   1000000000000 11 11-plus 12 120 13 14 144 15 1530s 16 17 1728 1750s 1760s 1770s

@@ -1,4 +1,5 @@
 defmodule Lemma.En.IrregularVerbs do
+  @moduledoc false
   @rules [
     [{"abetting", "abet"}],
     [{"abhorred", "abhor"}],

@@ -1,5 +1,5 @@
 defmodule Lemma.En.Adjectives do
-
+  @moduledoc false
   @adjs_set """
   .22-caliber .22-calibre .38-caliber .38-calibre .45-caliber .45-calibre 0 1 10
   10-membered 100 1000 1000th 100th 101 101st 105 105th 10th 11 110 110th 115

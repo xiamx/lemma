@@ -4,10 +4,10 @@ defmodule LemmaTest do
   doctest Lemma
 
   setup_all context do
-    [fst: Lemma.Parser.new :en]
+    [fst: Lemma.new :en]
   end
 
   test "simple scenario", context do
-    assert {:ok, "play"} == context[:fst] |> Lemma.Parser.parse("plays")
+    assert {:ok, "play"} == context[:fst] |> Lemma.parse("plays")
   end
 end
