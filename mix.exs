@@ -29,9 +29,7 @@ defmodule Lemma.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:gen_state_machine, "~> 2.0"},
       {:gen_fst, github: "xiamx/gen_fst"},
-      {:libgraph, "~> 0.9"},
       {:benchee, "~> 0.9", only: :dev},
       {:exprof, "~> 0.2.0", only: :dev}
     ]
