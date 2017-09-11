@@ -14,9 +14,7 @@ defmodule Lemma.Parser do
   end 
 
   def parse(parser, words = [w | ws]) do
-    words
-    |> Enum.map(&(Task.async(fn -> parse(parser, &1) end)))
-    |> Enum.map(&Task.await/1)
+    Enum.map(words, &(parse(parser, &1)))
   end
 
   def parse(parser, word) do

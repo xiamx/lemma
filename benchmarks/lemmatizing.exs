@@ -20,7 +20,7 @@ Benchee.run(%{
   "Lemmatize input sequential" => fn () ->
     Enum.map(words, &(Lemma.Parser.parse(parser, &1)))
   end,
-  "Lemmatize input parallel" => fn () ->
-    Lemma.Parser.parse(parser, words)
-  end,
+  # "Lemmatize input parallel" => fn () ->
+  #   Lemma.Parser.parse(parser, words)
+  # end,
 })
