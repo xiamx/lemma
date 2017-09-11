@@ -13,6 +13,15 @@ A Morphological Parser (Analyser) / Lemmatizer writen in Elixir.
 
 **Not for production use, this library is neither cpu nor memory efficient**
 
+## Example Usage
+
+```elixir
+# Initialize a new morphological parser for English
+parser = Lemma.Parser.new :en
+assert {:ok, "play"} == parser |> Lemma.Parser.parse("plays")
+```
+
+Documentation can be found at [https://hexdocs.pm/lemma](https://hexdocs.pm/lemma).
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
@@ -56,9 +65,10 @@ Lemmatize input sequential          4.31      232.14 ms    68.17%      110.00 ms
 
 ### Compile-time vs Runtime parser
 
-To evaluate the difference between building the parser at compile time vs. building the parser at runtime, another 
+To evaluate the difference between building the parser at compile time vs. building the parser at runtime, we have another benchmarking script.
+The script can be invoked with `mix run benchmarks/runtime_vs_compiletime.exs`
 
-A simple benchmarking script is provided to test the performance of performing lemmatization on a paragraph of words. The script can be invoked with `mix run benchmarks/runtime_vs_compiletime.exs`
+#### Sample output
 
 ````
 Operating System: Windows
@@ -87,7 +97,4 @@ Compiled parser       15.91 K
 Dynamic parser         3.80 K - 4.18x slower
 ```
 
-#### Sample output
-
-Documentation can be found at [https://hexdocs.pm/lemma](https://hexdocs.pm/lemma).
 
