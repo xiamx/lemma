@@ -3,16 +3,13 @@
 A Morphological Parser (Analyser) / Lemmatizer writen in Elixir.
 
 > For grammatical reasons, documents are going to use different forms of a word, such as organize, organizes, and organizing. Additionally, there are families of derivationally related words with similar meanings, such as democracy, democratic, and democratization. In many situations, it seems as if it would be useful for a search for one of these words to return documents that contain another word in the set.
-> The goal of both stemming and lemmatization is to reduce inflectional forms and sometimes derivationally related forms of a word to a common base form. For instance:
-
-> am, are, is $$\Rightarrow$$ be 
-
-> car, cars, car's, cars' $$\Rightarrow$$ car
-
-> The result of this mapping of text will be something like:
-
-> the boy's cars are different colors $$\Rightarrow$$ 
-> the boy car be differ color
+> <br/> The goal of both stemming and lemmatization is to reduce inflectional forms and sometimes derivationally related forms of a word to a common base form. For instance:
+> <br/><br/>am, are, is ⇒ be 
+> <br/>car, cars, car's, cars' ⇒ car
+> <br/><br/>The result of this mapping of text will be something like:
+> <br/>_the boy's cars are different colors_ ⇒
+> the boy car be differ color. 
+> <br/> -- [Stanford NLP Group](https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html)
 
 **Not for production use, this library is neither cpu nor memory efficient**
 
