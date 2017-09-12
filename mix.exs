@@ -22,7 +22,8 @@ defmodule Lemma.Mixfile do
   defp package do
     [
       name: "lemma",
-      files: ["lib", "priv", "mix.exs", "README*", "readme*", "LICENSE*", "license*"],
+      description: "A Morphological Parser / Lemmatizer, commonly used in Natural Language Processing",
+      files: ["lib", "mix.exs", "README*", "LICENSE*"],
       licenses: ["Apache 2.0"],
       maintainers: ["Meng Xuan Xia <mengxuan.xia@outlook.com>"],
       links: %{"GitHub" => "https://github.com/xiamx/lemma"}
