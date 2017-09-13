@@ -1,5 +1,10 @@
 # <img src="http://cs.mcgill.ca/~mxia3/images/lemma.png" alt="Lemma">
 
+[![Build Status](https://travis-ci.org/xiamx/lemma.svg?branch=master)](https://travis-ci.org/xiamx/lemma)
+[![Hex.pm](https://img.shields.io/hexpm/v/lemma.svg)](https://hex.pm/packages/lemma)
+[![license](https://img.shields.io/github/license/xiamx/lemma.svg)](https://github.com/xiamx/lemma/blob/master/LICENSE)
+
+
 A Morphological Parser (Analyser) / Lemmatizer writen in Elixir. It is implemented using a textbook classic method relying in an abstraction called [Finite State Transducer](https://github.com/xiamx/gen_fst). 
 
 **What are morphological parsing and lemmatization?**
