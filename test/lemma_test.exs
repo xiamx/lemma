@@ -3,7 +3,7 @@ defmodule LemmaTest do
   use GenStateMachine
   doctest Lemma
 
-  setup_all context do
+  setup_all _context do
     [fst: Lemma.new :en]
   end
 

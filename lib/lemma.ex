@@ -38,7 +38,7 @@ defmodule Lemma do
   """
   @spec new(atom) :: GenFST.fst
   def new(:en) do
-    parser = GenFST.new
+    GenFST.new
     |> generate_rules(Lemma.En.IrregularAdjectives.rules)
     |> generate_rules(Lemma.En.IrregularAdverbs.rules)
     |> generate_rules(Lemma.En.IrregularNouns.rules)
@@ -56,11 +56,11 @@ defmodule Lemma do
   Use the given parser to parse a word or a list of words.
   """
   @spec parse(GenFST.fst, String.t | [String.t]) :: String.t | [String.t]
-  def parse(parser, [w | ws] = words) do
+  def parse(parser, [_w | _ws] = words) do
     Enum.map(words, &(parse(parser, &1)))
   end
 
   def parse(parser, word) do
-    parsed = GenFST.parse(parser, String.downcase(word))
+    GenFST.parse(parser, String.downcase(word))
   end
 end

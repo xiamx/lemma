@@ -4,7 +4,7 @@ defmodule Lemma.MorphParserGenerator do
   """
 
   defp filter_valid_words(words) do
-    words = words
+    words
     |> Enum.map(&String.trim/1)
     |> Enum.reject(&(&1 == ""))
   end
