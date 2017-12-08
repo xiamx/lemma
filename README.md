@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/github/license/xiamx/lemma.svg)](https://github.com/xiamx/lemma/blob/master/LICENSE)
 
 
-A Morphological Parser (Analyser) / Lemmatizer writen in Elixir. It is implemented using a textbook classic method relying in an abstraction called [Finite State Transducer](https://github.com/xiamx/gen_fst). 
+A Morphological Parser (Analyser) / Lemmatizer written in Elixir. It is implemented using a textbook classic method relying in an abstraction called [Finite State Transducer](https://github.com/xiamx/gen_fst). 
 
 **What are morphological parsing and lemmatization?**
 
