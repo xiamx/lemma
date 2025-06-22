@@ -69,6 +69,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     
+    env:
+      MIX_ENV: dev
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
