@@ -8,7 +8,7 @@ defmodule Lemma.En.Rules do
     {"e", "ed"},
     {"", "ed"},
     {"", "ing"},
-    {"e", "ing"},
+    {"e", "ing"}
   ]
 
   @noun_rules [

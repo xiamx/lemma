@@ -2052,7 +2052,7 @@ defmodule Lemma.En.IrregularNouns do
     [{"zoeae", "zoea"}],
     [{"zoeas", "zoaea"}],
     [{"zoonoses", "zoonosis"}],
-    [{"zoosporangia", "zoosporangium"}],
+    [{"zoosporangia", "zoosporangium"}]
   ]
 
   def rules do

@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+env:
+  MIX_ENV: test
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test on Elixir ${{ matrix.elixir }} / OTP ${{ matrix.otp }}
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        elixir: ['1.15', '1.16', '1.17', '1.18']
+        otp: ['25', '26', '27']
+        exclude:
+          - elixir: '1.15'
+            otp: '27'
+          - elixir: '1.18'
+            otp: '25'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Elixir
+      uses: erlef/setup-beam@v1
+      with:
+        elixir-version: ${{ matrix.elixir }}
+        otp-version: ${{ matrix.otp }}
+
+    - name: Cache deps
+      uses: actions/cache@v4
+      with:
+        path: |
+          deps
+          _build
+        key: ${{ runner.os }}-mix-${{ matrix.elixir }}-${{ matrix.otp }}-${{ hashFiles('**/mix.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-mix-${{ matrix.elixir }}-${{ matrix.otp }}-
+
+    - name: Install dependencies
+      run: mix deps.get
+
+    - name: Check formatting
+      run: mix format --check-formatted
+
+    - name: Run tests
+      run: mix test
+
+    - name: Run static analysis
+      run: mix credo --strict
+      if: matrix.elixir == '1.18' && matrix.otp == '27'
+
+  docs:
+    name: Generate documentation
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Elixir
+      uses: erlef/setup-beam@v1
+      with:
+        elixir-version: '1.18'
+        otp-version: '27'
+
+    - name: Cache deps
+      uses: actions/cache@v4
+      with:
+        path: |
+          deps
+          _build
+        key: ${{ runner.os }}-mix-docs-${{ hashFiles('**/mix.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-mix-docs-
+
+    - name: Install dependencies
+      run: mix deps.get
+
+    - name: Generate docs
+      run: mix docs

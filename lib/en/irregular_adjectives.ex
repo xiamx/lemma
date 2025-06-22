@@ -1488,7 +1488,7 @@ defmodule Lemma.En.IrregularAdjectives do
     [{"zanier", "zany"}],
     [{"zaniest", "zany"}],
     [{"zippier", "zippy"}],
-    [{"zippiest", "zippy"}],
+    [{"zippiest", "zippy"}]
   ]
 
   def rules do

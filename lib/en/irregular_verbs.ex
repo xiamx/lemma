@@ -2401,7 +2401,7 @@ defmodule Lemma.En.IrregularVerbs do
     [{"zigzagged", "zigzag"}],
     [{"zigzagging", "zigzag"}],
     [{"zipped", "zip"}],
-    [{"zipping", "zip"}],
+    [{"zipping", "zip"}]
   ]
 
   def rules do

@@ -31,22 +31,25 @@ defmodule Lemma do
 
   import Lemma.MorphParserGenerator
 
+  alias Lemma.En.{IrregularAdjectives, IrregularAdverbs, IrregularNouns, IrregularVerbs}
+  alias Lemma.En.{Adjectives, Nouns, Rules, Verbs}
+
   @doc """
   Initialize a morphological parser for the given language.
 
   Only English (`:en`) is supported currently.
   """
-  @spec new(atom) :: GenFST.fst
+  @spec new(atom) :: GenFST.fst()
   def new(:en) do
-    GenFST.new
-    |> generate_rules(Lemma.En.IrregularAdjectives.rules)
-    |> generate_rules(Lemma.En.IrregularAdverbs.rules)
-    |> generate_rules(Lemma.En.IrregularNouns.rules)
-    |> generate_rules(Lemma.En.IrregularVerbs.rules)
-    |> generate_rules(Lemma.En.Verbs.all, Lemma.En.Rules.verbs)
-    |> generate_rules(Lemma.En.Nouns.all, Lemma.En.Rules.nouns)
-    |> generate_rules(Lemma.En.Adjectives.all, Lemma.En.Rules.adjs)
-  end 
+    GenFST.new()
+    |> generate_rules(IrregularAdjectives.rules())
+    |> generate_rules(IrregularAdverbs.rules())
+    |> generate_rules(IrregularNouns.rules())
+    |> generate_rules(IrregularVerbs.rules())
+    |> generate_rules(Verbs.all(), Rules.verbs())
+    |> generate_rules(Nouns.all(), Rules.nouns())
+    |> generate_rules(Adjectives.all(), Rules.adjs())
+  end
 
   def new(l) do
     raise "language #{l} not supported"
@@ -55,9 +58,9 @@ defmodule Lemma do
   @doc """
   Use the given parser to parse a word or a list of words.
   """
-  @spec parse(GenFST.fst, String.t | [String.t]) :: String.t | [String.t]
+  @spec parse(GenFST.fst(), String.t() | [String.t()]) :: String.t() | [String.t()]
   def parse(parser, [_w | _ws] = words) do
-    Enum.map(words, &(parse(parser, &1)))
+    Enum.map(words, &parse(parser, &1))
   end
 
   def parse(parser, word) do

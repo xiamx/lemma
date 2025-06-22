@@ -7,7 +7,7 @@ defmodule Lemma.En.IrregularAdverbs do
     [{"farther", "far"}],
     [{"further", "far"}],
     [{"harder", "hard"}],
-    [{"hardest", "hard"}],
+    [{"hardest", "hard"}]
   ]
 
   def rules do
