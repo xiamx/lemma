@@ -23,17 +23,9 @@ defmodule Lemma.MorphParserGenerator do
   fst that incorporate these rules
   """
   def generate_rules(fst, rules_) do
-    words_count = Enum.count(rules_)
-    IO.puts("Generating rules for #{words_count} words")
-
-    fst =
-      Enum.reduce(Enum.with_index(rules_), fst, fn {r, i}, fst ->
-        IO.write("\rProgress: #{i}/#{words_count} .. #{round(100 * i / words_count)}%")
-        fst |> GenFST.rule(r)
-      end)
-
-    IO.write("\n")
-    fst
+    Enum.reduce(rules_, fst, fn r, fst ->
+      fst |> GenFST.rule(r)
+    end)
   end
 
   @doc """
@@ -43,19 +35,11 @@ defmodule Lemma.MorphParserGenerator do
   """
   def generate_rules(fst, words, suffix_rules) do
     words = filter_valid_words(words)
-    words_count = Enum.count(words)
-    IO.puts("Generating rules for #{words_count} words")
 
-    fst =
-      Enum.reduce(Enum.with_index(words), fst, fn {word, i}, fst ->
-        IO.write("\rProgress: #{i + 1}/#{words_count} .. #{round(100 * i / words_count)}%")
-
-        Enum.reduce(suffix_rules, fst, fn suffix_rule, fst ->
-          process_one_rule(fst, word, suffix_rule)
-        end)
+    Enum.reduce(words, fst, fn word, fst ->
+      Enum.reduce(suffix_rules, fst, fn suffix_rule, fst ->
+        process_one_rule(fst, word, suffix_rule)
       end)
-
-    IO.write("\n")
-    fst
+    end)
   end
 end
