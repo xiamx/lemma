@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+
+set -e
+
+REQUIRED_ELIXIR_VERSION="1.15"
+ELIXIR_VERSION="1.17.3"
+
+# Add local bin to path if it exists to check that version first
+if [ -d "$PWD/.local/elixir/bin" ]; then
+    export PATH="$PWD/.local/elixir/bin:$PATH"
+fi
+
+# Helper to compare versions
+version_lt() {
+    [ "$1" = "$(echo -e "$1\n$2" | sort -V | head -n1)" ] && [ "$1" != "$2" ]
+}
+
+echo "==> Setting up environment..."
+
+# Check Erlang
+if ! command -v erl &> /dev/null; then
+  echo "Error: Erlang is not installed. Please install Erlang first (e.g., apt install erlang)."
+  exit 1
+fi
+
+INSTALL_NEEDED=false
+
+if ! command -v elixir &> /dev/null; then
+    echo "Elixir not found in PATH."
+    INSTALL_NEEDED=true
+else
+    # parse version. `elixir --version` output format varies but usually "Elixir 1.x.x ..."
+    # We take the second word of the line starting with Elixir
+    CURRENT_VER=$(elixir --version | grep "^Elixir" | awk '{print $2}')
+
+    # Check if current version < required
+    # using sort -V to compare
+    if version_lt "$CURRENT_VER" "$REQUIRED_ELIXIR_VERSION"; then
+        echo "Current Elixir version $CURRENT_VER is older than required $REQUIRED_ELIXIR_VERSION."
+        INSTALL_NEEDED=true
+    else
+        echo "Elixir version $CURRENT_VER is sufficient."
+    fi
+fi
+
+if [ "$INSTALL_NEEDED" = true ]; then
+    echo "==> Installing local Elixir $ELIXIR_VERSION..."
+
+    OTP_VERSION=$(erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().' -noshell | tr -d '"\r\n')
+    echo "Detected Erlang/OTP version: $OTP_VERSION"
+
+    mkdir -p .local
+    DOWNLOAD_URL="https://github.com/elixir-lang/elixir/releases/download/v${ELIXIR_VERSION}/elixir-otp-${OTP_VERSION}.zip"
+
+    echo "Downloading from $DOWNLOAD_URL..."
+    # using curl
+    if curl -fSL -o .local/elixir.zip "$DOWNLOAD_URL"; then
+        # clean old install
+        rm -rf .local/elixir
+        unzip -q .local/elixir.zip -d .local/elixir
+        rm .local/elixir.zip
+
+        export PATH="$PWD/.local/elixir/bin:$PATH"
+        echo "Elixir installed to .local/elixir"
+        elixir --version
+    else
+        echo "Failed to download Elixir. Check OTP version compatibility."
+        echo "Attempted URL: $DOWNLOAD_URL"
+        exit 1
+    fi
+fi
+
+echo "==> Installing Hex and Rebar..."
+mix local.hex --force
+mix local.rebar --force
+
+echo "==> Getting dependencies..."
+mix deps.get
+
+echo "==> Compiling..."
+mix compile
+
+echo "==> Setup complete!"
+
+if [ "$INSTALL_NEEDED" = true ] || [[ "$PATH" == *".local/elixir/bin"* ]]; then
+    echo ""
+    echo "IMPORTANT: To use this environment, run the following command:"
+    echo "export PATH=\"$PWD/.local/elixir/bin:\$PATH\""
+fi
