@@ -1,6 +1,6 @@
 # <img src="http://cs.mcgill.ca/~mxia3/images/lemma.png" alt="Lemma">
 
-[![Build Status](https://travis-ci.org/xiamx/lemma.svg?branch=master)](https://travis-ci.org/xiamx/lemma)
+[![Build Status](https://github.com/xiamx/lemma/actions/workflows/ci.yml/badge.svg)](https://github.com/xiamx/lemma/actions/workflows/ci.yml)
 [![Hex.pm](https://img.shields.io/hexpm/v/lemma.svg)](https://hex.pm/packages/lemma)
 [![license](https://img.shields.io/github/license/xiamx/lemma.svg)](https://github.com/xiamx/lemma/blob/master/LICENSE)
 

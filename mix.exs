@@ -4,7 +4,7 @@ defmodule Lemma.MixProject do
   def project do
     [
       app: :lemma,
-      version: "0.2.0",
+      version: "0.2.1",
       elixir: "~> 1.15",
       deps: deps(),
       package: package(),
