@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Ensure we are using the local elixir if present
+if [ -d "$PWD/.local/elixir/bin" ]; then
+    export PATH="$PWD/.local/elixir/bin:$PATH"
+fi
+
+echo "==> Running tests..."
+mix test
+
+echo "==> Running Credo..."
+mix credo --strict
+
+echo "==> Running Dialyzer..."
+mix dialyzer
